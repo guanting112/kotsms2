@@ -172,7 +172,8 @@ LICENSE
 連結分享
 --------
 
-[註冊簡訊王的會員][kotsms_signup]、[簡訊王官網 與 API 文件][kotsms_homepage]
+[註冊簡訊王的會員][kotsms_signup]、[簡訊王官網][kotsms_homepage]、[API 技術支援][kotsms_tech]
 
-[kotsms_signup]: https://www.kotsms.com.tw/accjoin.php
-[kotsms_homepage]: https://www.kotsms.com.tw/
+[kotsms_signup]: https://kotsms.com.tw/index.php?selectpage=MembersReg&step=viewrules
+[kotsms_homepage]: https://www.kotsms.com.tw
+[kotsms_tech]: https://kotsms.com.tw/index.php?selectpage=pagenews&kind=4
