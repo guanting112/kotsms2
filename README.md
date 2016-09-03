@@ -1,13 +1,13 @@
-Kotsms2 ( 2016 新版 台灣簡訊 KotSMS API Ruby 版套件 )
+Kotsms2 ( 2016 新版 簡訊王 KotSMS API Ruby 版套件 )
 =================================================
 
 [![Gem Version](https://badge.fury.io/rb/kotsms2.svg)](https://badge.fury.io/rb/kotsms2) [![Build Status](https://travis-ci.org/guanting112/kotsms2.svg?branch=master)](https://travis-ci.org/guanting112/kotsms2)
 
 ![kotsms](http://i.imgur.com/KVuaBIm.png)
 
-此為針對 [台灣簡訊][kotsms_homepage] KotSMS API 開發的專屬套件
+此為針對 [簡訊王][kotsms_homepage] KotSMS API 開發的專屬套件
 
-您可以透過該套件來實作台灣簡訊的一般、預約簡訊發送 與 簡訊餘額查詢 的程式
+您可以透過該套件來實作簡訊王的一般、預約簡訊發送 與 簡訊餘額查詢 的程式
 
 適用於
 --------
@@ -36,7 +36,7 @@ gem 'kotsms2', '~> 1.1.0'
 
 本 API 套件，提供幾組以下方法來方便您開發簡訊相關服務
 
-但要使用前，需要先[註冊台灣簡訊的會員][kotsms_signup]，否則您的程式無法存取台灣簡訊的 API 管道
+但要使用前，需要先[註冊簡訊王的會員][kotsms_signup]，否則您的程式無法存取簡訊王的 API 管道
 
 ```ruby
 require 'kotsms2'
@@ -64,7 +64,7 @@ sms_client.account_is_available
 
 手機號碼格式 0911222333 ( 台灣手機 )、886911222333 ( 國碼 + 手機號碼 )
 
-根據台灣簡訊說明，台灣門號每則扣 1 通，國際門號每則扣 3 通
+根據簡訊王說明，台灣門號每則扣 1 通，國際門號每則扣 3 通
 
 ```ruby
 sms_client.send_message to: '手機號碼', content: "簡訊內容.."
@@ -74,7 +74,7 @@ sms_client.send_message to: '手機號碼', content: "簡訊內容.."
 
 若要使用預約發送，可以指定 at 參數給 send_message 方法
 
-同時程式會自動轉換時區 至 台灣簡訊 適用的時區 ( +08:00 )
+同時程式會自動轉換時區 至 簡訊王 適用的時區 ( +08:00 )
 
 ```ruby
 # 純 Ruby 請用加秒數的方式
@@ -122,9 +122,9 @@ sms_client.send_message to: '手機號碼', content: "簡訊內容..", long: fal
 
 若 access_success 為 false 則表示過程有出現錯誤
 
-以下範例為帳號密碼的錯誤，error 參數則是台灣簡訊的 error code
+以下範例為帳號密碼的錯誤，error 參數則是簡訊王的 error code
 
-error code 的部分，請以 台灣簡訊 API 文件的定義為主，本套件不處理相關結果
+error code 的部分，請以 簡訊王 API 文件的定義為主，本套件不處理相關結果
 
 ```ruby
 {:access_success=>false, :message_id=>nil, :error=>"KOTSMS:00010"}
@@ -172,7 +172,7 @@ LICENSE
 連結分享
 --------
 
-[註冊台灣簡訊的會員][kotsms_signup]、[台灣簡訊官網 與 API 文件][kotsms_homepage]
+[註冊簡訊王的會員][kotsms_signup]、[簡訊王官網 與 API 文件][kotsms_homepage]
 
 [kotsms_signup]: https://www.kotsms.com.tw/accjoin.php
 [kotsms_homepage]: https://www.kotsms.com.tw/
