@@ -1,5 +1,13 @@
 module Kotsms2
   module Formatter
+    def to_big5(old_string)
+      new_string = old_string.encode("BIG5", :invalid => :replace, :undef => :replace, :replace => "?")
+    end
+
+    def to_utf8(old_string)
+      new_string = old_string.encode("UTF-8", :invalid => :replace, :undef => :replace, :replace => "?")
+    end
+
     def match_string(rule, string)
       match_data = rule.match(string)
       match_data.nil? ? nil : match_data[1]
