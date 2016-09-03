@@ -5,7 +5,7 @@ require 'json'
 
 describe 'Kotsms2::Client' do
   before do
-    @fake_username = 'TwSMS2 API 單元測試'
+    @fake_username = 'KotSMS 2 API 單元測試'
     @fake_password = Time.now.to_i
 
     @sms_client = Kotsms2::Client.new(username: @fake_username, password: @fake_password)

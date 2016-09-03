@@ -1,11 +1,11 @@
-Kotsms2 ( 2016 新版 台灣簡訊 TwSMS API Ruby 版套件 )
+Kotsms2 ( 2016 新版 台灣簡訊 KotSMS API Ruby 版套件 )
 =================================================
 
 [![Gem Version](https://badge.fury.io/rb/kotsms2.svg)](https://badge.fury.io/rb/kotsms2) [![Build Status](https://travis-ci.org/guanting112/kotsms2.svg?branch=master)](https://travis-ci.org/guanting112/kotsms2)
 
 ![twsms](http://i.imgur.com/KVuaBIm.png)
 
-此為針對 [台灣簡訊][twsms_homepage] TwSMS API 開發的專屬套件
+此為針對 [台灣簡訊][twsms_homepage] KotSMS API 開發的專屬套件
 
 您可以透過該套件來實作台灣簡訊的一般、預約簡訊發送 與 簡訊餘額查詢 的程式
 
