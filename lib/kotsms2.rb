@@ -10,7 +10,7 @@ module Kotsms2
 
     def initialize(options={})
       @user_agent = options.fetch(:agent) { "kotsms2/#{VERSION}" }
-      @api_host   = options.fetch(:host) { 'api.twsms.com' }
+      @api_host   = options.fetch(:host) { 'api.kotsms.com.tw' }
       @username   = options.fetch(:username) { ENV.fetch('TWSMS_USERNAME') }
       @password   = options.fetch(:password) { ENV.fetch('TWSMS_PASSWORD') }
     end

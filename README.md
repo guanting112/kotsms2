@@ -174,5 +174,5 @@ LICENSE
 
 [註冊台灣簡訊的會員][twsms_signup]、[台灣簡訊官網 與 API 文件][twsms_homepage]
 
-[twsms_signup]: https://www.twsms.com/accjoin.php
-[twsms_homepage]: https://www.twsms.com/
+[twsms_signup]: https://www.kotsms.com.tw/accjoin.php
+[twsms_homepage]: https://www.kotsms.com.tw/
