@@ -8,7 +8,7 @@ module Kotsms2
     def format_time_string(time)
       return nil if time.nil?
       new_time = to_asia_taipei_timezone(time)
-      new_time.strftime('%Y%m%d%H%M')
+      new_time.strftime('%Y/%m/%d %H:%M:%S')
     end
 
     def to_asia_taipei_timezone(time)
@@ -24,13 +24,13 @@ module Kotsms2
         error: nil
       }
 
-      code_text  = match_string(/<code>(?<code>\w+)<\/code>/, original_info)
-      message_id_text = match_string(/<msgid>(?<message_id>\d+)<\/msgid>/, original_info)
+      code_text = match_string(/^kmsgid=(?<code>-?\d+)$/, original_info)
+      code_number = code_text.to_i
 
-      new_info[:access_success] = !code_text.nil? && !message_id_text.nil? && code_text == '00000'
+      new_info[:access_success] = !code_text.nil? && code_number > -1
 
       if new_info[:access_success]
-        new_info[:message_id] = message_id_text
+        new_info[:message_id] = code_number
       else
         new_info[:error] = "KOTSMS:CODE_NOT_FOUND"
         new_info[:error] = "KOTSMS:#{code_text}" unless code_text.nil?

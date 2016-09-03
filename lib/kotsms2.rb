@@ -22,13 +22,12 @@ module Kotsms2
     end
 
     def send_message(options={})
-      options[:to]      ||= nil
+      options[:to] ||= nil
       options[:content] ||= nil
-      options[:at]      = format_time_string(options[:at])
-      options[:long]    = options[:long] || options[:long].nil? ? :Y : :N
-      options[:popup]   = options[:popup] ? :Y : :N
+      options[:at] = format_time_string(options[:at])
+      options[:at] = 0 if options[:at].nil? # 據 Kotsms 文件指出，如果要更即時，可以指定為 0，比不給參數還快
 
-      response = get(@api_host, '/smsSend.php', popup: options[:popup], mo: :N, longsms: options[:long], mobile: options[:to], message: options[:content], drurl: '', sendtime: options[:at])
+      response = get(@api_host, '/kotsmsapi-2.php', dstaddr: options[:to], smbody: options[:content], dlvtime: options[:at])
 
       format_send_message_info(response)
     end
