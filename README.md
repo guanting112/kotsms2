@@ -3,9 +3,9 @@ Kotsms2 ( 2016 新版 台灣簡訊 KotSMS API Ruby 版套件 )
 
 [![Gem Version](https://badge.fury.io/rb/kotsms2.svg)](https://badge.fury.io/rb/kotsms2) [![Build Status](https://travis-ci.org/guanting112/kotsms2.svg?branch=master)](https://travis-ci.org/guanting112/kotsms2)
 
-![twsms](http://i.imgur.com/KVuaBIm.png)
+![kotsms](http://i.imgur.com/KVuaBIm.png)
 
-此為針對 [台灣簡訊][twsms_homepage] KotSMS API 開發的專屬套件
+此為針對 [台灣簡訊][kotsms_homepage] KotSMS API 開發的專屬套件
 
 您可以透過該套件來實作台灣簡訊的一般、預約簡訊發送 與 簡訊餘額查詢 的程式
 
@@ -36,7 +36,7 @@ gem 'kotsms2', '~> 1.1.0'
 
 本 API 套件，提供幾組以下方法來方便您開發簡訊相關服務
 
-但要使用前，需要先[註冊台灣簡訊的會員][twsms_signup]，否則您的程式無法存取台灣簡訊的 API 管道
+但要使用前，需要先[註冊台灣簡訊的會員][kotsms_signup]，否則您的程式無法存取台灣簡訊的 API 管道
 
 ```ruby
 require 'kotsms2'
@@ -172,7 +172,7 @@ LICENSE
 連結分享
 --------
 
-[註冊台灣簡訊的會員][twsms_signup]、[台灣簡訊官網 與 API 文件][twsms_homepage]
+[註冊台灣簡訊的會員][kotsms_signup]、[台灣簡訊官網 與 API 文件][kotsms_homepage]
 
-[twsms_signup]: https://www.kotsms.com.tw/accjoin.php
-[twsms_homepage]: https://www.kotsms.com.tw/
+[kotsms_signup]: https://www.kotsms.com.tw/accjoin.php
+[kotsms_homepage]: https://www.kotsms.com.tw/
