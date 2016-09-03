@@ -3,7 +3,7 @@ Kotsms2 ( 2016 新版 簡訊王 KotSMS API Ruby 版套件 )
 
 [![Gem Version](https://badge.fury.io/rb/kotsms2.svg)](https://badge.fury.io/rb/kotsms2) [![Build Status](https://travis-ci.org/guanting112/kotsms2.svg?branch=master)](https://travis-ci.org/guanting112/kotsms2)
 
-![kotsms](http://i.imgur.com/KVuaBIm.png)
+![kotsms](http://i.imgur.com/Q4QbtOP.png)
 
 此為針對 [簡訊王][kotsms_homepage] KotSMS API 開發的專屬套件
 
@@ -20,7 +20,7 @@ Ruby 2 以上的版本，也可在 Ruby On Rails 專案引入
 請在您的 Ruby 或 Rails 專案裡的 Gemfile 加入以下指令
 
 ```ruby
-gem 'kotsms2', '~> 1.1.0'
+gem 'kotsms2', '~> 1.0.0'
 ```
 
 然後執行 bundle install 更新套件組
