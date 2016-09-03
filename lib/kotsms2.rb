@@ -34,7 +34,7 @@ module Kotsms2
     end
 
     def get_balance
-      response = get(@api_host, '/smsQuery.php', deltime: :N, checkpoint: :Y, mobile: '', msgid: '')
+      response = get(@api_host, '/memberpoint.php')
 
       format_balance_info(response)
     end

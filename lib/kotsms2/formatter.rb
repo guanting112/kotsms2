@@ -47,13 +47,13 @@ module Kotsms2
         error: nil
       }
 
-      code_text  = match_string(/<code>(?<code>\w+)<\/code>/, original_info)
-      point_text = match_string(/<point>(?<point>\d+)<\/point>/, original_info)
+      code_text = match_string(/^(?<code>-?\d+)$/, original_info)
+      code_number = code_text.to_i
 
-      new_info[:access_success] = !code_text.nil? && !point_text.nil? && code_text == '00000'
+      new_info[:access_success] = !code_text.nil? && code_number > -1
 
       if new_info[:access_success]
-        new_info[:message_quota] = point_text.to_i
+        new_info[:message_quota] = code_number
       else
         new_info[:error] = "KOTSMS:CODE_NOT_FOUND"
         new_info[:error] = "KOTSMS:#{code_text}" unless code_text.nil?
