@@ -1,7 +1,7 @@
-require 'twsms2/version'
-require 'twsms2/network'
-require 'twsms2/exception'
-require 'twsms2/formatter'
+require 'kotsms2/version'
+require 'kotsms2/network'
+require 'kotsms2/exception'
+require 'kotsms2/formatter'
 
 module Kotsms2
   class Client
@@ -9,7 +9,7 @@ module Kotsms2
     include Kotsms2::Formatter
 
     def initialize(options={})
-      @user_agent = options.fetch(:agent) { "twsms2/#{VERSION}" }
+      @user_agent = options.fetch(:agent) { "kotsms2/#{VERSION}" }
       @api_host   = options.fetch(:host) { 'api.twsms.com' }
       @username   = options.fetch(:username) { ENV.fetch('TWSMS_USERNAME') }
       @password   = options.fetch(:password) { ENV.fetch('TWSMS_PASSWORD') }

@@ -1,7 +1,7 @@
 Kotsms2 ( 2016 新版 台灣簡訊 TwSMS API Ruby 版套件 )
 =================================================
 
-[![Gem Version](https://badge.fury.io/rb/twsms2.svg)](https://badge.fury.io/rb/twsms2) [![Build Status](https://travis-ci.org/guanting112/twsms2.svg?branch=master)](https://travis-ci.org/guanting112/twsms2)
+[![Gem Version](https://badge.fury.io/rb/kotsms2.svg)](https://badge.fury.io/rb/kotsms2) [![Build Status](https://travis-ci.org/guanting112/kotsms2.svg?branch=master)](https://travis-ci.org/guanting112/kotsms2)
 
 ![twsms](http://i.imgur.com/KVuaBIm.png)
 
@@ -20,16 +20,16 @@ Ruby 2 以上的版本，也可在 Ruby On Rails 專案引入
 請在您的 Ruby 或 Rails 專案裡的 Gemfile 加入以下指令
 
 ```ruby
-gem 'twsms2', '~> 1.1.0'
+gem 'kotsms2', '~> 1.1.0'
 ```
 
 然後執行 bundle install 更新套件組
 
     $ bundle
 
-或也可以直接將 twsms2 裝在系統上
+或也可以直接將 kotsms2 裝在系統上
 
-    $ gem install twsms2
+    $ gem install kotsms2
 
 使用方式
 --------
@@ -39,7 +39,7 @@ gem 'twsms2', '~> 1.1.0'
 但要使用前，需要先[註冊台灣簡訊的會員][twsms_signup]，否則您的程式無法存取台灣簡訊的 API 管道
 
 ```ruby
-require 'twsms2'
+require 'kotsms2'
 
 # Kotsms2 是走 https 的方式進行系統操作
 sms_client = Kotsms2::Client.new(username: '會員帳號', password: '會員密碼', agent: "Mozilla/5.0 (可自訂 user-agent)")

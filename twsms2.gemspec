@@ -1,10 +1,10 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'twsms2/version'
+require 'kotsms2/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "twsms2"
+  spec.name          = "kotsms2"
   spec.version       = Kotsms2::VERSION
   spec.authors       = ["Guanting Chen"]
   spec.email         = ["cgt886@gmail.com"]
@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.platform      = Gem::Platform::RUBY
   spec.summary       = %q{2016 新版 台灣簡訊 TwSMS API ( 純 Ruby / Rails 專案適用 )}
   spec.description   = %q{2016 新版 台灣簡訊 TwSMS API ( 純 Ruby / Rails 專案適用 )}
-  spec.homepage      = "https://github.com/guanting112/twsms2"
+  spec.homepage      = "https://github.com/guanting112/kotsms2"
   spec.required_ruby_version = '~> 2'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

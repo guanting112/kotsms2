@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 # require 'webmock/minitest'
-require 'twsms2'
+require 'kotsms2'
 require 'json'
 
 describe 'Kotsms2::Client' do

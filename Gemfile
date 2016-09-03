@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in twsms2.gemspec
+# Specify your gem's dependencies in kotsms2.gemspec
 gemspec
