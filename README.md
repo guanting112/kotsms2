@@ -64,9 +64,8 @@ sms_client.account_is_available
 
 手機號碼格式 0911222333 ( 台灣手機 )、886911222333 ( 國碼 + 手機號碼 )
 
-根據簡訊王說明，台灣門號每則扣 1 通，國際門號每則扣 3 通
-
 ```ruby
+# 備註：簡訊王的內容需要為 Big 5 編碼，本套件將會自動進行轉換，若有遇到無法轉換的，會將會替換成「?」號
 sms_client.send_message to: '手機號碼', content: "簡訊內容.."
 ```
 
@@ -84,25 +83,21 @@ sms_client.send_message to: '手機號碼', content: "預約簡訊測試: #{Time
 sms_client.send_message to: '手機號碼', content: "預約簡訊測試: #{Time.now}", at: Time.now + 2.days
 ```
 
-#### 強制直接顯示簡訊內容
+#### 切換 大量發送 專用線路
 
-可以加入 popup 參數，讓簡訊在收訊人的手機裝置直接顯示在上面 ( 可能不會被手機儲存 )
+根據簡訊王文件說明，若要進行上千、萬數以上的大量發送，建議使用專用線路
 
-```ruby
-sms_client.send_message to: '手機號碼', content: "簡訊內容..", popup: true
-```
-
-#### 關閉長簡訊支援
-
-一般發送簡訊時，預設為長簡訊發送
-
-因此，若超 SMS 短信字元長度，將會以第二封起開始計算
-
-加入 long 參數，若指定為 false 則不會使用長簡訊格式
+因此，本程式有提供一個 heavy_loading 參數，讓您切換至大量發送專用線路
 
 ```ruby
-sms_client.send_message to: '手機號碼', content: "簡訊內容..", long: false
+sms_client.send_message to: '手機號碼', content: "簡訊內容..", heavy_loading: true
 ```
+
+當您指定了該參數後，將會使用另外的線路進行發送
+
+但請根據實際發送需求進行使用，小量發送可以不用加入 heavy_loading 參數
+
+因為簡訊王的大量發送專用線路，屬於另一種處理方式，小量發送並不會比較即時
 
 ### 發送簡訊 的 回傳結果
 
@@ -115,7 +110,7 @@ sms_client.send_message to: '手機號碼', content: "簡訊內容..", long: fal
 系統會另外回傳一組 message_id 用來讓你追蹤簡訊
 
 ```ruby
-{:access_success=>true, :message_id=>"217620029", :error=>nil}
+{:access_success=>true, :message_id=>"123456789", :error=>nil}
 ```
 
 #### 發生錯誤時
@@ -127,7 +122,7 @@ sms_client.send_message to: '手機號碼', content: "簡訊內容..", long: fal
 error code 的部分，請以 簡訊王 API 文件的定義為主，本套件不處理相關結果
 
 ```ruby
-{:access_success=>false, :message_id=>nil, :error=>"KOTSMS:00010"}
+{:access_success=>false, :message_id=>nil, :error=>"KOTSMS:-2"}
 ```
 
 ----
@@ -152,7 +147,7 @@ message_quota 則是簡訊餘額，代表你還剩幾封可以用，若為 0 就
 
 ```ruby
 # 備註：簡訊商若發送過程中出現意外狀況，會晚點將簡訊額度補回您的會員帳號
-{:access_success=>true, :message_quota=>77, :error=>nil}
+{:access_success=>true, :message_quota=>10, :error=>nil}
 ```
 
 #### 發生錯誤
@@ -160,7 +155,7 @@ message_quota 則是簡訊餘額，代表你還剩幾封可以用，若為 0 就
 若 access_success 為 false 則表示過程有出現錯誤，同時 message_quota 會為 0
 
 ```ruby
-{:access_success=>false, :message_quota=>0, :error=>"KOTSMS:00010"}
+{:access_success=>false, :message_quota=>0, :error=>"KOTSMS:-2"}
 ```
 
 
