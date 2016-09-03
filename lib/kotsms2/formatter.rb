@@ -32,8 +32,8 @@ module Kotsms2
       if new_info[:access_success]
         new_info[:message_id] = message_id_text
       else
-        new_info[:error] = "TWSMS:CODE_NOT_FOUND"
-        new_info[:error] = "TWSMS:#{code_text}" unless code_text.nil?
+        new_info[:error] = "KOTSMS:CODE_NOT_FOUND"
+        new_info[:error] = "KOTSMS:#{code_text}" unless code_text.nil?
         new_info[:error].upcase!
       end
 
@@ -55,8 +55,8 @@ module Kotsms2
       if new_info[:access_success]
         new_info[:message_quota] = point_text.to_i
       else
-        new_info[:error] = "TWSMS:CODE_NOT_FOUND"
-        new_info[:error] = "TWSMS:#{code_text}" unless code_text.nil?
+        new_info[:error] = "KOTSMS:CODE_NOT_FOUND"
+        new_info[:error] = "KOTSMS:#{code_text}" unless code_text.nil?
         new_info[:error].upcase!
       end
 

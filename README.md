@@ -127,7 +127,7 @@ sms_client.send_message to: '手機號碼', content: "簡訊內容..", long: fal
 error code 的部分，請以 台灣簡訊 API 文件的定義為主，本套件不處理相關結果
 
 ```ruby
-{:access_success=>false, :message_id=>nil, :error=>"TWSMS:00010"}
+{:access_success=>false, :message_id=>nil, :error=>"KOTSMS:00010"}
 ```
 
 ----
@@ -160,7 +160,7 @@ message_quota 則是簡訊餘額，代表你還剩幾封可以用，若為 0 就
 若 access_success 為 false 則表示過程有出現錯誤，同時 message_quota 會為 0
 
 ```ruby
-{:access_success=>false, :message_quota=>0, :error=>"TWSMS:00010"}
+{:access_success=>false, :message_quota=>0, :error=>"KOTSMS:00010"}
 ```
 
 
