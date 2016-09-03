@@ -42,7 +42,9 @@ gem 'kotsms2', '~> 1.0.0'
 require 'kotsms2'
 
 # Kotsms2 是走 https 的方式進行系統操作
-sms_client = Kotsms2::Client.new(username: '會員帳號', password: '會員密碼', agent: "Mozilla/5.0 (可自訂 user-agent)")
+sms_client = Kotsms2::Client.new(
+  username: '會員帳號', password: '會員密碼', agent: "Mozilla/5.0 (可自訂 user-agent)"
+)
 ```
 
 使用範例
@@ -65,7 +67,7 @@ sms_client.account_is_available
 手機號碼格式 0911222333 ( 台灣手機 )、886911222333 ( 國碼 + 手機號碼 )
 
 ```ruby
-# 備註：簡訊王的內容需要為 Big 5 編碼，本套件將會自動進行轉換，若有遇到無法轉換的，會將會替換成「?」號
+# 簡訊王的內容需要為 Big 5 編碼，本套件會自動轉換；若有無法轉換的字，會替換成 ? 問號
 sms_client.send_message to: '手機號碼', content: "簡訊內容.."
 ```
 
