@@ -3,10 +3,10 @@ require 'twsms2/network'
 require 'twsms2/exception'
 require 'twsms2/formatter'
 
-module Twsms2
+module Kotsms2
   class Client
-    include Twsms2::Network
-    include Twsms2::Formatter
+    include Kotsms2::Network
+    include Kotsms2::Formatter
 
     def initialize(options={})
       @user_agent = options.fetch(:agent) { "twsms2/#{VERSION}" }

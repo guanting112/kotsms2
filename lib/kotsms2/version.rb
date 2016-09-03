@@ -1,3 +1,3 @@
-module Twsms2
+module Kotsms2
   VERSION = "0.5.0"
 end

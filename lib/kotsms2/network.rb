@@ -1,7 +1,7 @@
 require 'net/http'
 require 'cgi'
 
-module Twsms2
+module Kotsms2
   module Network
     def get(host, request_uri, params = {})
       uri = URI('https://' + host + request_uri)

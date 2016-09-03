@@ -5,7 +5,7 @@ require 'twsms2/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "twsms2"
-  spec.version       = Twsms2::VERSION
+  spec.version       = Kotsms2::VERSION
   spec.authors       = ["Guanting Chen"]
   spec.email         = ["cgt886@gmail.com"]
   spec.license       = "MIT"

@@ -1,4 +1,4 @@
-module Twsms2
+module Kotsms2
   module Formatter
     def match_string(rule, string)
       match_data = rule.match(string)

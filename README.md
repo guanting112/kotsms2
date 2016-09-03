@@ -1,4 +1,4 @@
-Twsms2 ( 2016 新版 台灣簡訊 TwSMS API Ruby 版套件 )
+Kotsms2 ( 2016 新版 台灣簡訊 TwSMS API Ruby 版套件 )
 =================================================
 
 [![Gem Version](https://badge.fury.io/rb/twsms2.svg)](https://badge.fury.io/rb/twsms2) [![Build Status](https://travis-ci.org/guanting112/twsms2.svg?branch=master)](https://travis-ci.org/guanting112/twsms2)
@@ -41,8 +41,8 @@ gem 'twsms2', '~> 1.1.0'
 ```ruby
 require 'twsms2'
 
-# Twsms2 是走 https 的方式進行系統操作
-sms_client = Twsms2::Client.new(username: '會員帳號', password: '會員密碼', agent: "Mozilla/5.0 (可自訂 user-agent)")
+# Kotsms2 是走 https 的方式進行系統操作
+sms_client = Kotsms2::Client.new(username: '會員帳號', password: '會員密碼', agent: "Mozilla/5.0 (可自訂 user-agent)")
 ```
 
 使用範例
