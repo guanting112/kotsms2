@@ -38,7 +38,7 @@ module Kotsms2
       new_info[:access_success] = !code_text.nil? && code_number > -1
 
       if new_info[:access_success]
-        new_info[:message_id] = code_number
+        new_info[:message_id] = code_number.to_s
       else
         new_info[:error] = "KOTSMS:CODE_NOT_FOUND"
         new_info[:error] = "KOTSMS:#{code_text}" unless code_text.nil?
