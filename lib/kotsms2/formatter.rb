@@ -1,11 +1,11 @@
 module Kotsms2
   module Formatter
-    def to_big5(old_string)
-      new_string = old_string.encode("BIG5", :invalid => :replace, :undef => :replace, :replace => "?")
+    def to_big5(original_string)
+      original_string.encode("BIG5", :invalid => :replace, :undef => :replace, :replace => "?")
     end
 
-    def to_utf8(old_string)
-      new_string = old_string.encode("UTF-8", :invalid => :replace, :undef => :replace, :replace => "?")
+    def to_utf8(original_string)
+      original_string.encode("UTF-8", :invalid => :replace, :undef => :replace, :replace => "?")
     end
 
     def match_string(rule, string)
@@ -40,9 +40,7 @@ module Kotsms2
       if new_info[:access_success]
         new_info[:message_id] = code_number.to_s
       else
-        new_info[:error] = "KOTSMS:CODE_NOT_FOUND"
-        new_info[:error] = "KOTSMS:#{code_text}" unless code_text.nil?
-        new_info[:error].upcase!
+        new_info[:error] = code_text.nil? ? "KOTSMS:CODE_NOT_FOUND" : "KOTSMS:#{code_text}".upcase
       end
 
       new_info
@@ -63,9 +61,7 @@ module Kotsms2
       if new_info[:access_success]
         new_info[:message_quota] = code_number
       else
-        new_info[:error] = "KOTSMS:CODE_NOT_FOUND"
-        new_info[:error] = "KOTSMS:#{code_text}" unless code_text.nil?
-        new_info[:error].upcase!
+        new_info[:error] = code_text.nil? ? "KOTSMS:CODE_NOT_FOUND" : "KOTSMS:#{code_text}".upcase
       end
 
       new_info
