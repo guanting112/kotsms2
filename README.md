@@ -1,7 +1,9 @@
 Kotsms2 ( 2016 新版 簡訊王 KotSMS API Ruby 版套件 )
 =================================================
 
-[![Gem Version](https://badge.fury.io/rb/kotsms2.svg)](https://badge.fury.io/rb/kotsms2) [![Build Status](https://travis-ci.org/guanting112/kotsms2.svg?branch=master)](https://travis-ci.org/guanting112/kotsms2)
+[![Gem Version](https://badge.fury.io/rb/kotsms2.svg)](https://badge.fury.io/rb/kotsms2)
+[![Build Status](https://travis-ci.org/guanting112/kotsms2.svg?branch=master)](https://travis-ci.org/guanting112/kotsms2)
+[![Code Climate](https://codeclimate.com/github/guanting112/kotsms2/badges/gpa.svg)](https://codeclimate.com/github/guanting112/kotsms2)
 
 ![kotsms](http://i.imgur.com/Q4QbtOP.png)
 
