@@ -211,7 +211,7 @@ message_status 代表訊息狀態，可以知道是否已抵達 或是 發生通
 
 #### 發生錯誤時
 
-若 access_success 為 false 則表示過程有出現錯誤，同時 is_delivered 會為 false，message_status 會是 'status_undefined'
+若 access_success 為 false 則表示過程有出現錯誤，同時 is_delivered 會為 false，message_status 會是 nil
 
 ```ruby
 {:access_success=>false, :is_delivered=>false, :message_status=>nil, :error=>"KOTSMS:MEMBERERROR"}
