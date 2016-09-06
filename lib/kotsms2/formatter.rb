@@ -52,8 +52,7 @@ module Kotsms2
 
       status_text = match_string(/^statusstr=(?<status>\w+)$/, original_info)
 
-      new_info[:message_status] = message_status_sanitize(status_text)
-      new_info[:access_success] = new_info[:message_status] != 'status_undefined'
+      new_info[:access_success] = !status_text.nil? && status_text != 'MEMBERERROR' && status_text != 'NOSMS'
 
       if new_info[:access_success]
         new_info[:message_status] = message_status_sanitize(status_text)

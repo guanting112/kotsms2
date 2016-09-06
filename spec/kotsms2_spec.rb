@@ -110,7 +110,7 @@ describe 'Kotsms2::Client' do
   describe '以不存在的帳號密碼，使用 get_message_status 方法' do
     it '必須回傳錯誤的結果，ERROR 的部分需要為 KOTSMS:MEMBERERROR' do
       # Kotsms 的 狀態回傳 實作上，沒有完全按照文件
-      @sms_client.get_message_status(message_id: '1234').must_equal({:access_success=>false, :is_delivered=>false, :message_status=>"status_undefined", :error=>"KOTSMS:MEMBERERROR"})
+      @sms_client.get_message_status(message_id: '1234').must_equal({:access_success=>false, :is_delivered=>false, :message_status=>nil, :error=>"KOTSMS:MEMBERERROR"})
     end
   end
 end
