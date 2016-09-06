@@ -11,6 +11,38 @@ describe 'Kotsms2::Client' do
     @sms_client = Kotsms2::Client.new(username: @fake_username, password: @fake_password)
   end
 
+  describe '測試 message_status_sanitize 方法' do
+    it '必須通過以下一連串的測試，全部通過須為 true' do
+
+      default_status = true
+      result = default_status
+      undefined_status = "#{Time.now}"
+
+      test_data_collection = [
+        { original_status: 'DELIVRD', it_should_be: 'delivered' },
+        { original_status: 'EXPIRED', it_should_be: 'expired' },
+        { original_status: 'DELETED', it_should_be: 'deleted' },
+        { original_status: 'UNDELIV', it_should_be: 'undelivered' },
+        { original_status: 'ACCEPTD', it_should_be: 'transmitting' },
+        { original_status: 'UNKNOWN', it_should_be: 'unknown' },
+        { original_status: 'REJECTD', it_should_be: 'rejected' },
+        { original_status: 'SYNTAXE', it_should_be: 'incorrect_sms_system_syntax' },
+        { original_status: undefined_status, it_should_be: 'status_undefined' }
+      ]
+
+      test_data_collection.each do |test_data|
+        incorrect = @sms_client.message_status_sanitize(test_data[:original_status]) != test_data[:it_should_be]
+
+        if incorrect
+          result = false
+          break
+        end
+      end
+
+      result.must_equal(true)
+    end
+  end
+
   describe '測試 Kotsms2::ClientTimeoutError ' do
     it '刻意將 timeout 設定為 0，看是否可以 rescue 到' do
       rescue_timeout_exception = false
@@ -72,6 +104,13 @@ describe 'Kotsms2::Client' do
   describe '以不存在的帳號密碼，使用 get_balance 方法' do
     it '必須回傳錯誤的結果，ERROR 的部分需要為 KOTSMS:-2' do
       @sms_client.get_balance.must_equal({:access_success=>false, :message_quota=>0, :error=>"KOTSMS:-2"})
+    end
+  end
+
+  describe '以不存在的帳號密碼，使用 get_message_status 方法' do
+    it '必須回傳錯誤的結果，ERROR 的部分需要為 KOTSMS:MEMBERERROR' do
+      # Kotsms 的 狀態回傳 實作上，沒有完全按照文件
+      @sms_client.get_message_status(message_id: '1234').must_equal({:access_success=>false, :is_delivered=>false, :message_status=>nil, :error=>"KOTSMS:MEMBERERROR"})
     end
   end
 end

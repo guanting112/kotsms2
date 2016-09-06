@@ -25,6 +25,45 @@ module Kotsms2
       asia_taipei_time
     end
 
+    def message_status_sanitize(original_text)
+      status_table = {
+        'SUCCESSED' => 'delivered',
+        'DELIVRD' => 'delivered',
+        'EXPIRED' => 'expired',
+        'DELETED' => 'deleted',
+        'UNDELIV' => 'undelivered',
+        'ACCEPTD' => 'transmitting',
+        'UNKNOWN' => 'unknown',
+        'REJECTD' => 'rejected',
+        'SYNTAXE' => 'incorrect_sms_system_syntax'
+      }
+
+      new_text = status_table[original_text]
+      new_text.nil? ? 'status_undefined' : new_text
+    end
+
+    def format_message_status(original_info)
+      new_info = {
+        access_success: false,
+        is_delivered: false,
+        message_status: nil,
+        error: nil
+      }
+
+      status_text = match_string(/^statusstr=(?<status>\w+)$/, original_info)
+
+      new_info[:access_success] = !status_text.nil? && status_text != 'MEMBERERROR' && status_text != 'NOSMS'
+
+      if new_info[:access_success]
+        new_info[:message_status] = message_status_sanitize(status_text)
+        new_info[:is_delivered]   = new_info[:message_status] == 'delivered'
+      else
+        new_info[:error] = status_text.nil? ? "KOTSMS:CODE_NOT_FOUND" : "KOTSMS:#{status_text}".upcase
+      end
+
+      new_info
+    end
+
     def format_send_message_info(original_info)
       new_info = {
         access_success: false,
