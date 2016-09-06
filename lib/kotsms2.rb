@@ -42,5 +42,14 @@ module Kotsms2
 
       format_balance_info(response)
     end
+
+    def get_message_status(options={})
+      options[:message_id] ||= nil
+
+      response = get(@api_host, '/msgstatus.php', kmsgid: options[:message_id])
+
+      format_message_status(response)
+    end
+
   end
 end
