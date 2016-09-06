@@ -13,6 +13,7 @@ module Kotsms2
       @api_host   = options.fetch(:host) { 'api.kotsms.com.tw' }
       @username   = options.fetch(:username) { ENV.fetch('KOTSMS_USERNAME') }
       @password   = options.fetch(:password) { ENV.fetch('KOTSMS_PASSWORD') }
+      @timeout    = options.fetch(:timeout) { 10 }
     end
 
     def account_is_available
