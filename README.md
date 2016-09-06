@@ -22,7 +22,7 @@ Ruby 2 以上的版本，也可在 Ruby On Rails 專案引入
 請在您的 Ruby 或 Rails 專案裡的 Gemfile 加入以下指令
 
 ```ruby
-gem 'kotsms2', '~> 1.0.0'
+gem 'kotsms2', '~> 1.1.0'
 ```
 
 然後執行 bundle install 更新套件組
@@ -43,9 +43,18 @@ gem 'kotsms2', '~> 1.0.0'
 ```ruby
 require 'kotsms2'
 
-# Kotsms2 是走 https 的方式進行系統操作
+# 程式將會以 SSL 的方式，走 https 連線到簡訊商的系統
+sms_client = Kotsms2::Client.new(username: '會員帳號', password: '會員密碼')
+```
+
+也可以加入 agent ( user-agent ) 跟 timeout ( 逾時時間/秒 ) 參數 至 client 物件
+
+```ruby
 sms_client = Kotsms2::Client.new(
-  username: '會員帳號', password: '會員密碼', agent: "Mozilla/5.0 (可自訂 user-agent)"
+  username: '會員帳號',
+  password: '會員密碼',
+  agent: "Mozilla/5.0 ( Hello World )",
+  timeout: 10
 )
 ```
 
@@ -131,7 +140,7 @@ error code 的部分，請以 簡訊王 API 文件的定義為主，本套件不
 
 ----
 
-### 查詢簡訊餘額
+### 查詢目前帳號所持有的簡訊餘額
 
 若你需要查詢您會員帳號的簡訊餘額，可以用以下指令處理
 
@@ -139,7 +148,7 @@ error code 的部分，請以 簡訊王 API 文件的定義為主，本套件不
 sms_client.get_balance
 ```
 
-### 查詢簡訊餘額 的 回傳結果
+### 查詢目前帳號所持有的簡訊餘額 的 回傳結果
 
 #### 得到簡訊餘額
 
@@ -162,6 +171,28 @@ message_quota 則是簡訊餘額，代表你還剩幾封可以用，若為 0 就
 {:access_success=>false, :message_quota=>0, :error=>"KOTSMS:-2"}
 ```
 
+----
+
+例外狀況的處理
+--------
+
+在某些情況下，程式會擲出一些例外給 ruby 去處理，你可以先用 Kotsms2 自帶的 Error 來先做 rescue
+
+```ruby
+
+begin
+  sms_client.account_is_available
+rescue Kotsms2::ClientError
+  'Client 物件有內部錯誤'
+rescue Kotsms2::ServerError => error
+  "伺服器端有一些無法處理的狀況 #{error.message}"
+rescue Kotsms2::ClientTimeoutError
+  "發生 Timeout 囉"
+rescue Kotsms2::Error => error
+  "發生非預期的錯誤 #{error.message}"
+end
+
+```
 
 LICENSE
 --------
