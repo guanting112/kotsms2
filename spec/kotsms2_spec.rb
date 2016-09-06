@@ -11,6 +11,21 @@ describe 'Kotsms2::Client' do
     @sms_client = Kotsms2::Client.new(username: @fake_username, password: @fake_password)
   end
 
+  describe '測試 Kotsms2::ClientTimeoutError ' do
+    it '刻意將 timeout 設定為 0，看是否可以 rescue 到' do
+      rescue_timeout_exception = false
+
+      begin
+        sms_client = Kotsms2::Client.new(username: @fake_username, password: @fake_password, timeout: 0)
+        sms_client.account_is_available
+      rescue Kotsms2::ClientTimeoutError
+        rescue_timeout_exception = true
+      end
+
+      rescue_timeout_exception.must_equal(true)
+    end
+  end
+
   describe '確認字串編碼與轉換' do
     it '預設 Ruby 環境的字串，必須要是 UTF-8' do
       "簡訊測試 #{Time.now}".encoding.to_s.must_equal('UTF-8')
