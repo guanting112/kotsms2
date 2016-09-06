@@ -171,6 +171,53 @@ message_quota 則是簡訊餘額，代表你還剩幾封可以用，若為 0 就
 {:access_success=>false, :message_quota=>0, :error=>"KOTSMS:-2"}
 ```
 
+### 查詢特定的簡訊發送狀態
+
+若你需要查詢特定的簡訊發送狀態，您可以指定 message id 向簡訊商查詢該封簡訊最後是否已發送成功
+
+```ruby
+sms_client.get_message_status message_id: '在 send_message 得到的 message_id'
+```
+
+### 查詢特定的簡訊發送狀態 的 回傳結果
+
+#### 得到發送狀況
+
+當你執行完成後，get_message_status 方法會回傳一組 hash 型態的結果
+
+只要 access_success 的值為 true 就一定代表系統有成功取得資料
+
+is_delivered 代表是否已寄到用戶手機，true 為是、false 為有發生 delivered 以外的狀況
+
+message_status 代表訊息狀態，可以知道是否已抵達 或是 發生通信上的錯誤 等等的相關資訊
+
+```ruby
+{:access_success=>true, :is_delivered=>true, :message_status=>"delivered", :error=>nil}
+```
+
+#### get_message_status 裡的 message_status 涵義
+
+```ruby
+'delivered'                   # 簡訊已抵達 
+'expired'                     # 簡訊寄送超過有效時間 
+'deleted'                     # 已被刪除 
+'undelivered'                 # 無法送達 
+'transmitting'                # 傳輸中，正在接收 
+'unknown'                     # 未知錯誤，可能無效 
+'rejected'                    # 被拒絕 
+'incorrect_sms_system_syntax' # 簡訊商編碼錯誤 
+'status_undefined'            # 核心 API 無法得知狀況 
+```
+
+#### 發生錯誤時
+
+若 access_success 為 false 則表示過程有出現錯誤，同時 is_delivered 會為 false，message_status 會是 'status_undefined'
+
+```ruby
+{:access_success=>false, :is_delivered=>false, :message_status=>nil, :error=>"KOTSMS:MEMBERERROR"}
+{:access_success=>false, :is_delivered=>false, :message_status=>nil, :error=>"KOTSMS:NOSMS"}
+```
+
 ----
 
 例外狀況的處理
