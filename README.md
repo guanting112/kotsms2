@@ -1,4 +1,4 @@
-Kotsms2 ( 2016 新版 簡訊王 KotSMS API Ruby 版套件 )
+Kotsms2 ( 2018 新版 簡訊王 KotSMS API Ruby 版套件 )
 =================================================
 
 [![Gem Version](https://badge.fury.io/rb/kotsms2.svg)](https://badge.fury.io/rb/kotsms2)
