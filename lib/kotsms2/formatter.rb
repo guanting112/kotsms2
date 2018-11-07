@@ -28,6 +28,7 @@ module Kotsms2
     def message_status_sanitize(original_text)
       status_table = {
         'SUCCESSED' => 'delivered',
+        'DELIVERED' => 'delivered',
         'DELIVRD' => 'delivered',
         'EXPIRED' => 'expired',
         'DELETED' => 'deleted',

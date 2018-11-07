@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.email         = ["cgt886@gmail.com"]
   spec.license       = "MIT"
   spec.platform      = Gem::Platform::RUBY
-  spec.summary       = %q{2016 新版 簡訊王 KotSMS API ( 純 Ruby / Rails 專案適用 )}
-  spec.description   = %q{2016 新版 簡訊王 KotSMS API ( 純 Ruby / Rails 專案適用 )}
+  spec.summary       = %q{2018 新版 簡訊王 KotSMS API ( 純 Ruby / Rails 專案適用 )}
+  spec.description   = %q{2018 新版 簡訊王 KotSMS API ( 純 Ruby / Rails 專案適用 )}
   spec.homepage      = "https://github.com/guanting112/kotsms2"
   spec.required_ruby_version = '~> 2'
 
