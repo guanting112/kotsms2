@@ -19,6 +19,7 @@ describe 'Kotsms2::Client' do
       undefined_status = "#{Time.now}"
 
       test_data_collection = [
+        { original_status: 'DELIVERED', it_should_be: 'delivered' },
         { original_status: 'DELIVRD', it_should_be: 'delivered' },
         { original_status: 'EXPIRED', it_should_be: 'expired' },
         { original_status: 'DELETED', it_should_be: 'deleted' },
